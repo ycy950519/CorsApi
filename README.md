@@ -10,5 +10,15 @@
 
 前端使用JSplumb.js实现拖动，使用Ajax.js实现数据传输
 
+![image](https://github.com/ycy950519/CorsApi/blob/master/Image/1564808196(1).jpg)
 
+![image](https://github.com/ycy950519/CorsApi/blob/master/Image/1564808487(1).jpg)
+
+![image](https://github.com/ycy950519/CorsApi/blob/master/Image/1564808516(1).jpg)
+
+![image](https://github.com/ycy950519/CorsApi/blob/master/Image/1564808551(1).jpg)
+
+![image](https://github.com/ycy950519/CorsApi/blob/master/Image/1564808576(1).jpg)
+
+![image](https://github.com/ycy950519/CorsApi/blob/master/Image/1564808666(1).jpg)
 
