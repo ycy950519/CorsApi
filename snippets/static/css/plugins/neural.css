@@ -1,0 +1,22 @@
+
+.lightbox{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	z-index: 7;
+	opacity: 0.3;
+	display: block;
+	background-color: rgb(0, 0, 0);
+	display: none;
+	}
+.pop,iframe{
+	position: absolute;
+	left: 50%;
+	top:0;
+	width: 893px;
+	height: 100%;
+	margin-left: -446.5px;
+	z-index: 9;
+	}

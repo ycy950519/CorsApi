@@ -1,0 +1,37 @@
+	# -*- coding: utf-8 -*-
+	'''
+	    线性归一化，也称为离差标准化
+	归一化结果=[（该点样本值与最小样本的差）/（样本该轴跨度）]*（放缩范围）+（放缩最小值）
+
+	'''
+	import numpy as np
+	from sklearn.preprocessing import MinMaxScaler
+
+	# 读取除表头外的所有数据
+	def loadDataSet(filename):
+	    my_list = []
+	    # 打开数据集
+	    fr = open(filename)
+	    # 去掉第一行
+	    next(fr)
+	    # 遍历每一行
+	    for line in fr.readlines():
+	        # 删除空白符之后进行切分
+	        lineArr = line.strip().split(',')
+	        # 将数据加入列表
+	        my_list.append(lineArr)
+	        # 返回数据矩阵
+	        my_matrix = np.mat(my_list)
+	    return my_matrix
+
+	# 以下将数据集进行归一化处理
+	filename = 'iris.csv'
+	my_matrix = loadDataSet(filename)
+	scaler = MinMaxScaler( )
+	# 计算训练数据的均值和方差， 后面就会用均值和方差来转换训练数据
+	scaler.fit(my_matrix)
+	# 把训练数据转换成标准的正态分布
+	iris_data = scaler.transform(my_matrix)
+
+
+

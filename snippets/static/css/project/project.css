@@ -1,0 +1,203 @@
+
+/*中间内容start*/
+
+.content {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+/*c_nav_menu部分*/
+
+.content .c_nav_menu {
+	width: 255px;
+	height: 100%;
+	float: left;
+}
+
+.content .c_nav_menu .m_header {
+	padding: 5px 10px;
+	font-weight: 900;
+}
+
+.content .c_nav_menu .m_contain {
+	overflow: hidden;
+	display: none;
+}
+
+.content .c_nav_menu .m_contain .c_serach {
+	position: relative;
+	padding: 10px 10px;
+}
+
+.content .c_nav_menu .m_contain .c_ul {
+	position: absolute;
+	top: 100px;
+	bottom: 0;
+	width: 255px;
+	overflow: auto;
+}
+
+.content .c_nav_menu .m_contain .c_ul .darg-data {
+	cursor: pointer;
+	display: inline-block;
+	padding: 8px 14px;
+	margin: 2px 1px;
+	font-size: 13px;
+	float: left;
+}
+
+
+/*c_window部分*/
+
+.content .c_window {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 32px;
+	right: 280px;
+	background: #eee;
+	z-index: 1;
+}
+
+.content .c_window .w_buttom{
+	position: absolute;
+	bottom: 10px;
+	left: 0px;
+	right: 0px;
+	z-index: 10;
+	text-align: center;
+}
+
+/*c_detail部分*/
+
+.content .c_detail {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 280px;
+}
+
+.content .c_detail .hidden_btn {
+	font-weight: 900;
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	z-index: 1;
+}
+
+.content .c_detail .d_header {
+	padding: 10px 20px;
+	font-size: 16px;
+}
+
+.content .c_detail .d_header span {
+	color: #777;
+	padding-left: 20px;
+}
+
+.content .c_detail .d_contain {
+	position: absolute;
+	top: 42px;
+	bottom: 0;
+	width: 280px;
+	overflow: auto;
+}
+/* 中间内容end */
+
+
+/* tasknode */
+.tasknode{
+	background-color:white;
+	border:2px solid #777777;
+	border-radius: 1em;
+	text-align:center;
+	z-index:24;
+	cursor:pointer;
+	position:absolute;
+	color:black;
+	padding:0.5em;
+	width:150px;
+	/*height:30px;*/
+
+}
+
+.tasknode .glyphicon-star {
+	position: absolute;
+	left: 14px;
+	top: 9px;
+}
+
+.tasknode .glyphicon-chevron-down {
+	position: absolute;
+	right: 14px;
+	top: 9px;
+}
+
+.tasknode .glyphicon-chevron-up {
+	position: absolute;
+	right: 14px;
+	top: 9px;
+}
+
+.tasknode p {
+	display: none;
+	word-wrap: break-word;
+}
+
+.tasknode:hover {
+	border: 2px solid lightgoldenrodyellow;
+}
+
+.property-list {
+	border: none;
+	background: white;
+	margin: 2px 15px !important;
+	width: 90%;
+}
+
+.property-list th {
+	font-size: 14px;
+	font-weight: 0px !important;
+	border: none;
+	margin: 0px;
+	padding: 3px !important;
+	color: #999191;
+}
+
+.property-list td {
+	border: none !important;
+	margin: 0px;
+	padding: 3px !important;
+}
+
+
+}
+
+
+input[type="checkbox"] + label::before {
+    content: "\a0";  /*不换行空格*/
+    display: inline-block;
+    vertical-align: .2em;
+    width: 3px;
+    height: 3px;
+	cursor: pointer;
+    margin-right: .2em;
+    border-radius: .2em;
+    background-color: silver;
+    text-indent: .15em;
+    line-height: .65;  /*行高不加单位，子元素将继承数字乘以自身字体尺寸而非父元素行高*/
+}
+/*
+input[type="checkbox"]:checked + label::before {
+    content: "\2713";
+    background-color: yellowgreen;
+}
+
+input {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+*/

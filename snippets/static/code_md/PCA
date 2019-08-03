@@ -1,0 +1,91 @@
+	# -*- coding: utf-8 -*-
+	import numpy as np
+	import pandas as pd
+	import matplotlib.pyplot as plt
+
+	# 计算均值
+	# 要求输入数据为numpy的矩阵格式，行表示样本数，列表示特征
+	def meanX(dataX):
+	    return np.mean(dataX,axis=0) # axis=0表示依照列来求均值。
+
+	# 编写pca方法
+	"""
+	參数：
+	    - XMat：传入的是一个numpy的矩阵格式，行表示样本数，列表示特征
+	    - k：表示取前k个特征值相应的特征向量
+	返回值：
+	    - finalData：參数一指的是返回的低维矩阵，相应于输入參数二
+	    - reconData：參数二相应的是移动坐标轴后的矩阵
+	"""
+	def pca(XMat, k):
+	    average = meanX(XMat)
+	    m, n = np.shape(XMat)
+	    avgs = np.tile(average, (m, 1))
+	    data_adjust = XMat - avgs
+	    covX = np.cov(data_adjust.T)   # 计算协方差矩阵
+	    featValue, featVec=  np.linalg.eig(covX)  # 求解协方差矩阵的特征值和特征向量
+	    index = np.argsort(-featValue) # 依照featValue进行从大到小排序
+	    if k > n:
+	        print("k 必须小于特征数")
+	        return
+	    else:
+	        # 注意特征向量是列向量
+	        # 而numpy的二维矩阵(数组)a[m][n]中，a[1]表示第1行值
+	        selectVec = np.matrix(featVec.T[index[:k]]) # 所以这里须要进行转置
+	        finalData = data_adjust * selectVec.T
+	        reconData = (finalData * selectVec) + average
+	    return finalData, reconData
+
+	# 读取除表头外的所有数据
+	def loadDataSet(filename):
+	    my_list = []
+	    # 打开数据集
+	    fr = open(filename)
+	    # 去掉第一行
+	    next(fr)
+	    # 遍历每一行
+	    for line in fr.readlines():
+	        # 删除空白符之后进行切分
+	        lineArr = line.strip().split(',')
+	        # 将数据加入列表
+	        my_list.append(lineArr)
+	        # 返回数据矩阵
+	        my_matrix = np.mat(my_list)
+	    return my_matrix
+
+	# 可视化结果
+	# 此处我将维数k指定为2，以便于使用以下的函数将其绘制出来
+	def plotBestFit(data1, data2):
+	    dataArr1 = np.array(data1)
+	    dataArr2 = np.array(data2)
+
+	    m = np.shape(dataArr1)[0]
+	    axis_x1 = []
+	    axis_y1 = []
+	    axis_x2 = []
+	    axis_y2 = []
+	    for i in range(m):
+	        axis_x1.append(dataArr1[i,0])
+	        axis_y1.append(dataArr1[i,1])
+	        axis_x2.append(dataArr2[i,0])
+	        axis_y2.append(dataArr2[i,1])
+	    fig = plt.figure()
+	    ax = fig.add_subplot(111)
+	    # 重构后的原始数据显示为蓝色，提取后的二维特征显示为红色
+	    ax.scatter(axis_x1, axis_y1, s=50, c='red', marker='s')
+	    ax.scatter(axis_x2, axis_y2, s=50, c='blue')
+	    plt.xlabel('x1')
+	    plt.ylabel('x2')
+	    plt.show()
+
+	# 測试
+	def main():
+	    datafile = "iris.csv"
+	    X = loadDataSet(datafile)
+	    XMat = np.array(X, dtype='float_')
+	    k = 2
+	    return pca(XMat, k)
+
+	if __name__ == "__main__":
+	    finalData, reconMat = main()
+	    plotBestFit(finalData, reconMat)

@@ -1,0 +1,32 @@
+#原始数据读入方法
+## 方法一：##
+    c = open('xxx.csv',"r")
+    file = csv.reader(c)
+    data_set = []
+    for line in file:
+        data_set.append(line)
+    data_set = np.array(data_set)
+    c.close()
+    上面程序的效果是将csv文件中的文本按行打印，每一行的元素都是以逗号分隔符’,’分隔得来。line里边的数据类型是string类型。
+    把string 数据转化成float型:
+    c = open('xxx.csv','r')
+    file = csv.reader(c)
+    data_set = []
+    for line in file:
+         #skip the frist line
+        if file.line_num == 1:
+                continue
+        #change the string to float
+        line = list(map(float, line))
+        data_set.append(line)
+    c.close()
+## 方法二：用numpy读取文件，首先要导入numpy包 ##
+    import numpy as np
+    trainInput_cvs = np.loadtxt('xxx.csv',dtype='str')
+    trainInput = trainInput_cvs.astype('float')
+
+## 方法三： 用pandas 读取数据##
+    import pandas as pd
+    ratings = pd.read_csv('xxx.csv')
+    #change the string to float
+    dataset = ratings.values

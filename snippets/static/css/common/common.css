@@ -1,0 +1,42 @@
+/*
+作者：Ethan
+时间：2017-01-13
+*/
+* {
+	margin: 0;
+	padding: 0
+}
+
+a:-webkit-any-link {
+	text-decoration: none;
+}
+a, a:hover {
+	text-decoration: none;
+}
+
+ul {
+	margin: 0
+}
+
+ul li {
+	list-style: none;
+}
+
+
+/* 禁止选中 */
+
+*.unselectable {
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	/*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.clear {
+	clear: both;
+}

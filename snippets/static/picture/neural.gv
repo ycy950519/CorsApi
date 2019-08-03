@@ -1,0 +1,116 @@
+digraph g {
+	graph [nodesep=1 ranksep=2 splines=false]
+	edge [arrowhead=none color="#707070"]
+	subgraph cluster_input {
+		node [color="#2ecc71" fontcolor="#2ecc71" shape=circle style=filled]
+		color=white
+		1
+		label="Neural network
+
+
+
+Input Layer"
+		rank=same
+		2
+		label="Neural network
+
+
+
+Input Layer"
+		rank=same
+		3
+		label="Neural network
+
+
+
+Input Layer"
+		rank=same
+		4
+		label="Neural network
+
+
+
+Input Layer"
+		rank=same
+		5
+		label="Neural network
+
+
+
+Input Layer"
+		rank=same
+		6
+		label="Neural network
+
+
+
+Input Layer"
+		rank=same
+		7
+		label="Neural network
+
+
+
+Input Layer"
+		rank=same
+	}
+	1 -> 8
+	2 -> 8
+	3 -> 8
+	4 -> 8
+	5 -> 8
+	6 -> 8
+	7 -> 8
+	1 -> 9
+	2 -> 9
+	3 -> 9
+	4 -> 9
+	5 -> 9
+	6 -> 9
+	7 -> 9
+	1 -> 10
+	2 -> 10
+	3 -> 10
+	4 -> 10
+	5 -> 10
+	6 -> 10
+	7 -> 10
+	1 -> 11
+	2 -> 11
+	3 -> 11
+	4 -> 11
+	5 -> 11
+	6 -> 11
+	7 -> 11
+	1 -> 12
+	2 -> 12
+	3 -> 12
+	4 -> 12
+	5 -> 12
+	6 -> 12
+	7 -> 12
+	subgraph cluster_1 {
+		color=white
+		rank=same
+		label="" labeljust=right labelloc=b
+		8 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
+		9 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
+		10 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
+		11 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
+		12 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
+	}
+	8 -> 13
+	9 -> 13
+	10 -> 13
+	11 -> 13
+	12 -> 13
+	subgraph cluster_output {
+		node [color="#2ecc71" fontcolor="#2ecc71" shape=circle style=filled]
+		color=white
+		rank=same
+		labeljust=1
+		13 [color="#e74c3c" fontcolor="#e74c3c" shape=circle style=filled]
+		label="Output Layer" labelloc=bottom
+	}
+	arrowShape=none
+}

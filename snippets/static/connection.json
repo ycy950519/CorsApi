@@ -1,0 +1,56 @@
+[
+    {
+        "connid": [
+            "hgEGEcGGnYpmrRbj",
+            "IwwRsEEkvfWGRWHO",
+            "B5jWmJr6RJL0VkrD"
+        ],
+        "conntype": [
+            "local",
+            "selectField",
+            "standard"
+        ]
+    },
+    {
+        "connid": [
+            "nvS20TGGD5eHaluR",
+            "7HfruEwa5V0QrPjE",
+            "eyzTdx37tRq4PFDI",
+            "lbENHIISOxwpNjL8",
+            "OySDGwgkAOTSmMEx"
+        ],
+        "conntype": [
+            "hive",
+            "joinTab",
+            "PCA",
+            "correlation",
+            "decisionTree"
+        ]
+    },
+    {
+        "connid": [
+            "94esDuw40RwwAZ5A",
+            "l3yrtkOJBTwXkp0m",
+            "s9Hp4nK8bJNUkis6"
+        ],
+        "conntype": [
+            "local",
+            "selectField",
+            "standard"
+        ]
+    },
+    {
+        "connid": [
+            "tt1dRUXogKCxFNpb",
+            "R6SI8mJWO0mjCuTb"
+        ],
+        "conntype": [
+            "local",
+            "selectField"
+        ]
+    },
+    {
+        "connid": [],
+        "conntype": []
+    }
+]

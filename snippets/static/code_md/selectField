@@ -1,0 +1,12 @@
+	#coding: utf-8
+	import csv
+	import pandas as pd
+
+	def ChooseFeatures(filename,features,k):
+	d = pd.read_csv(filename, usecols=features,nrows=k)
+	return d
+
+	filename = 'iris.csv'
+	features = ['T1','T3'] # 输入选择的特征名
+	k = 10 # 输入需要的行数
+	choose = ChooseFeatures(filename,features,k)

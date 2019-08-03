@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+{%load static%}
+    <meta charset="utf-8"/>
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/plugins/jquery.contextmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/project/project.css' %}"/>
+    <link rel="stylesheet" href="{% static 'js/plugins/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'js/plugins/bootstrap/css/bootstrap-theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common/common.css' %}">
+	<link rel="stylesheet" href="{% static 'css/plugins/jquery.lightbox-0.5.css' %}" media="screen" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/plugins/neural.css' %}" media="screen" type="text/css">
+    <!-- jquery -->
+    <script src="{% static 'js/plugins/JQuery/jquery.min.js' %}"></script>
+    <script src="{% static 'js/plugins/JQuery/jquery-ui.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'js/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- MATH -->
+    <script src="{% static 'js/plugins/math/Math.uuid.js' %}"></script>
+
+    <script src="{% static 'js/toolbar.js' %}"></script>
+	
+    <script src="{% static 'js/plugins/jsplumb/jsPlumb-2.2.8-min.js' %}"></script>
+    <script src="{% static 'js/plugins/JQuery/jquery.contextmenu.js' %}"></script>
+    <script src="{% static 'js/layer/layer.js' %}"></script>
+	<script src="{% static 'js/highlight.pack.js' %}"></script> 	
+	<script src="{% static 'js/project/marked.js' %}"></script>
+	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+	<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+
+</head>
+
+<body>
+<!-- 中间内容start -->
+<div class="content">
+    <!--c_nav_menu部分-->
+    <div class="c_nav_menu" id="c_nav_menu">
+        <div class="m_header"><span id="toLeft" style="cursor: default;font-size: 18px;">&gt;</span></div>
+        <div class="m_contain">
+            <div class="input-group  c_serach">
+                <span class="input-group-addon">@</span>
+                <input type="text" class="form-control" placeholder="Serach data">
+            </div>
+
+            <div class="c_ul unselectable" id="c_ul">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#Model_training" role="tab" data-toggle="tab">实验</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#explore" role="tab" data-toggle="tab">探索</a>
+                    </li>
+                </ul>
+
+                <!--
+                    Model_training下方面板
+                -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="Model_training">
+                        <!-- 折叠面板-->
+                        <div class="panel-group">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" style="display: block;"
+                                           href="#collapseOne">数据源
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" task-type="hiveIO" title="Tooltip on top" >HIVE</span>
+                                        <span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top" task-type="localIO">本地</span>
+										
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" style="display: block;"
+                                           href="#collapseTwo">数据操控
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top" task-type="selectField">字段选择</span>
+                                        <!--<span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top" task-type="addField">增加字段</span> -->
+                                        <span class="label label-primary darg-data" data-toggle="tooltip" 
+                                              data-placement="top" title="Tooltip on top" task-type="cleanMissing">清洗缺失值</span>
+                                        <!--<span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top" task-type="joinTab">关联表</span>-->
+                                        <span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top" task-type="removeDuplicate">去除重复行</span>
+                                        <span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top" task-type="SMOTE">SMOTE</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" style="display: block;"
+                                           href="#collapseThree">
+                                            数据转换
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <!--<span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top" task-type="noneDef">应用过滤器</span>-->
+                                        <span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top" task-type="standard">标准化</span>
+                                        <span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top" task-type="normalization">归一化</span>
+                                        <span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top" task-type="PCA">PCA</span>
+                                        <span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top" task-type="boxing">分箱</span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" style="display: block;"
+                                           href="#collapseSix">
+                                            机器学习
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseSix" class="panel-collapse collapse">
+                                    <div class="panel-body">
+
+                                        <div class="panel-group">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion1"
+                                                           href="#collapseOne1" style="display: block;">
+                                                            分类
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseOne1" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="decisionTree">决策树</span>
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="randomForest">随机森林</span>
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="gbdt">GBDT</span>
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="logitReg">逻辑回归</span>
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="svm">支持向量机</span>
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="naiveBayes">朴素贝叶斯</span>
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="neuralNet">神经网络</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion1"
+                                                           href="#collapseTwo1" style="display: block;">
+                                                            预测
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseTwo1" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="linearReg">线性回归</span>
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="decisionTreeReg">决策树回归</span>
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="neuralReg">神经网络回归</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion1"
+                                                           href="#collapseThree1" style="display: block;">
+                                                            聚类
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseThree1" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="kMeans">K-均值</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion1"
+                                                           href="#collapseFour1" style="display: block;">
+                                                            模型结果
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseFour1" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="scoreModel">模型预测</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion1"
+                                                           href="#collapseFive1" style="display: block;">
+                                                            模型评估
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseFive1" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <span class="label label-primary darg-data"
+                                                              data-toggle="tooltip" data-placement="top"
+                                                              title="Tooltip on top" task-type="evaluationMetrices">评估矩阵</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" style="display: block;"
+                                           href="#collapseSeven">
+                                            文本分析
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseSeven" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top">主题模型</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" style="display: block;"
+                                           href="#collapseEight">
+                                            部署
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseEight" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <span class="label label-primary darg-data" data-toggle="tooltip"
+                                              data-placement="top" title="Tooltip on top" task-type="noneDef">待定</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" style="display: block;"
+                                           href="#collapseNine">
+                                            已训练模型
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseNine" class="panel-collapse collapse">
+                                    <div class="panel-body"><span class="label label-primary darg-data"
+                                                                  data-toggle="tooltip" data-placement="top"
+                                                                  title="Tooltip on top">待定</span>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="explore">2</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--c_window部分-->
+    <div class="c_window" id="c_window" >
+
+    </div>
+
+
+    <!--c_detail部分-->
+    <div class="c_detail">
+        <div class="hidden_btn" style="cursor: default;font-size: 18px;" id="toRight">&gt;</div>
+        <div id="right_content">
+            <div class="d_header">
+                <div class="h_title">Properties <span>Project</span></div>
+            </div>
+            <div class="d_contain" >
+                <div class="panel-group" id ="prop_container">
+                    <div class="panel">
+
+                        <span class="glyphicon glyphicon-chevron-right" style="float: left;margin-right:10px;"></span>
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" style="display: block;"
+                               href="#pppp">数据源
+                            </a>
+                        </h4>
+
+                        <div id="pppp" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <span class="label label-primary darg-data" data-toggle="tooltip" data-placement="top"
+                                      title="Tooltip on top">本地</span>
+                                    <div class="panel">
+
+                                        <span class="glyphicon glyphicon-chevron-right" style="float: left;margin-right:10px;"></span>
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" style="display: block;"
+                                               href="#aaaa">数据源
+                                            </a>
+                                        </h4>
+
+                                        <div id="aaaa" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                <span class="label label-primary darg-data" data-toggle="tooltip" data-placement="top"
+                                      title="Tooltip on top">本地</span>
+                                    <div class="panel">
+
+                                        <span class="glyphicon glyphicon-chevron-right" style="float: left;margin-right:10px;"></span>
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" style="display: block;"
+                                               href="#bfda">数据源
+                                            </a>	
+                                        </h4>
+										
+                                        <div id="bfda" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <span class="label label-primary darg-data" data-toggle="tooltip" data-placement="top"
+                                                title="Tooltip on top">本地</span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 中间内容end-->
+<div id="table-params" class="hide"></div>
+
+</body>
+
+
+<script src="{% static 'js/project/flow/point.js' %}"></script>
+<script src="{% static 'js/project/flow/prop.js' %}"></script>
+<script src="{% static 'js/project/jsPlumb/baseType.js' %}"></script>
+<script src="{% static 'js/project/jsPlumb/editor.js' %}"></script>
+<script src="{% static 'js/project/jsPlumb/container.js' %}"></script>
+<script src="{% static 'js/project/jsPlumb/jsPlumbHelper.js' %}"></script>
+
+
+
+<script src="{% static 'js/project/jsPlumb/Util.js' %}"></script>
+
+<script src="{% static 'js/project/project.js' %}"></script>
+<script src="{% static 'js/plugins/JQuery/jquery.lightbox-0.5.js' %}"></script>
+<script src="{% static 'js/plugins/JQuery/pdf.js' %}"></script>
+<script src="{% static 'js/plugins/JQuery/pdf.worker.js' %}"></script>
+
+</html>

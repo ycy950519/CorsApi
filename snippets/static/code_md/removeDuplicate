@@ -1,0 +1,7 @@
+	# -*- coding: utf-8 -*-
+	from pandas import read_csv
+
+	#读入文件
+	d = read_csv('iris.csv')
+	#去除重复行
+	newD = d.drop_duplicates()

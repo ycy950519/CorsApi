@@ -1,0 +1,26 @@
+	from sklearn.preprocessing import StandardScaler
+	import numpy as np
+
+	# 读取除表头外的所有数据
+	def loadDataSet(filename):
+	    my_list = []
+	    # 打开数据集
+	    fr = open(filename)
+	    # 去掉第一行
+	    next(fr)
+	    # 遍历每一行
+	    for line in fr.readlines():
+	        # 删除空白符之后进行切分
+	        lineArr = line.strip().split(',')
+	        # 将数据加入列表
+	        my_list.append(lineArr)
+	        # 返回数据矩阵
+	        my_matrix = np.mat(my_list)
+	    return my_matrix
+
+	# 以下将数据集进行正态化处理
+	filename = 'iris.csv'
+	my_matrix = loadDataSet(filename)
+	stdsc = StandardScaler()
+	iris_data = stdsc.fit_transform(my_matrix)
+	print(iris_data)
